@@ -1,7 +1,7 @@
-
 import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog
+import share_data
 from wifi_analyze import analyze_wifi
 from bt_analyze import analyze_bt
 from gps_analyze import analyze_gps
@@ -60,6 +60,7 @@ dir_btn = tk.Button(dir_frame, text="浏览", command=browse_dir)
 dir_btn.pack(side='left')
 dir_entry = tk.Entry(dir_frame, width=70)
 dir_entry.pack(side='left', padx=5, fill='x', expand=True)
+share_data.dir_frame = dir_frame
 
 # BT 页：下拉选择框（平台）
 os_var = tk.StringVar(value="Android")
@@ -72,12 +73,14 @@ os_combo.pack(side='left')
 def get_os_combo_selection():
     """返回 os_combo 当前选择，并在 log 中显示"""
     value = os_var.get()
+    share_data.os_selection = value
     print(f"[OS选择] 当前平台: {value}")
     return value
 
 os_combo.bind("<<ComboboxSelected>>", lambda e: get_os_combo_selection())
 
-os_combo_index=os_combo.current()
+os_combo_index = os_combo.current()
+share_data.os_selection = os_var.get()
 print(f"[OS选择] 当前平台索引: {os_combo_index}")
 
 # 三个 sheet 页（标签页）
@@ -288,7 +291,14 @@ def get_and_log_bt_check_state():
 def get_and_log_gps_check_state():
     print("--- GPS 左列（平台） ---")
 
-wifi_btn = tk.Button(sheet_wifi, text="WiFi 分析", command=lambda: (get_and_log_wifi_check_state(), analyze_wifi()), width=12, height=2)
+def run_wifi_analyze():
+    share_data.file_path = file_entry.get().strip()
+    share_data.dir_path = dir_entry.get().strip()
+    share_data.os_selection = os_var.get()
+    get_and_log_wifi_check_state()
+    analyze_wifi()
+
+wifi_btn = tk.Button(sheet_wifi, text="WiFi 分析", command=run_wifi_analyze, width=12, height=2)
 wifi_btn.pack(pady=20)
 
 bt_btn = tk.Button(sheet_bt, text="BT 分析", command=lambda: (get_and_log_bt_check_state(), analyze_bt()), width=12, height=2)
