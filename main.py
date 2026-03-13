@@ -322,4 +322,6 @@ gps_btn = tk.Button(sheet_gps, text="GPS 分析", command=run_gps_analyze, width
 gps_btn.pack(pady=20)
 tk.Label(sheet_gps, text="GPS 日志分析", font=("", 12)).pack(pady=10)
 
+
+
 root.mainloop()
