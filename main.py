@@ -286,6 +286,7 @@ def build_bt_tab(parent, initial=None):
     tk.Button(bt_btn_frame, text="删除选中", command=bt_delete_selected, width=8).pack(side='left', padx=(0, 8))
     tk.Button(bt_btn_frame, text="清空", command=bt_clear_list, width=6).pack(side='left')
 
+<<<<<<< HEAD   (81e02f6e55eb3f5c4c3ebdebd4b4590fed86a7c2 Update UI tab size)
     def get_and_log_bt_check_state():
         print("--- BT 左列（平台） ---")
 
@@ -403,4 +404,8 @@ def _on_closing():
     root.destroy()
 
 root.protocol("WM_DELETE_WINDOW", _on_closing)
+=======
+
+
+>>>>>>> CHANGE (b05be3b2f625300233ba829d9c8cb1587be01d3d add UI 3)
 root.mainloop()
