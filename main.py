@@ -291,21 +291,34 @@ def get_and_log_bt_check_state():
 def get_and_log_gps_check_state():
     print("--- GPS 左列（平台） ---")
 
-def run_wifi_analyze():
+def sync_share_data():
     share_data.file_path = file_entry.get().strip()
     share_data.dir_path = dir_entry.get().strip()
     share_data.os_selection = os_var.get()
+
+def run_wifi_analyze():
+    sync_share_data()
     get_and_log_wifi_check_state()
     analyze_wifi()
+
+def run_bt_analyze():
+    sync_share_data()
+    get_and_log_bt_check_state()
+    analyze_bt()
+
+def run_gps_analyze():
+    sync_share_data()
+    get_and_log_gps_check_state()
+    analyze_gps()
 
 wifi_btn = tk.Button(sheet_wifi, text="WiFi 分析", command=run_wifi_analyze, width=12, height=2)
 wifi_btn.pack(pady=20)
 
-bt_btn = tk.Button(sheet_bt, text="BT 分析", command=lambda: (get_and_log_bt_check_state(), analyze_bt()), width=12, height=2)
+bt_btn = tk.Button(sheet_bt, text="BT 分析", command=run_bt_analyze, width=12, height=2)
 bt_btn.pack(pady=20)
 tk.Label(sheet_bt, text="蓝牙日志分析", font=("", 12)).pack(pady=10)
 
-gps_btn = tk.Button(sheet_gps, text="GPS 分析", command=lambda: (get_and_log_gps_check_state(), analyze_gps()), width=12, height=2)
+gps_btn = tk.Button(sheet_gps, text="GPS 分析", command=run_gps_analyze, width=12, height=2)
 gps_btn.pack(pady=20)
 tk.Label(sheet_gps, text="GPS 日志分析", font=("", 12)).pack(pady=10)
 
