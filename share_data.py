@@ -17,3 +17,8 @@ os_selection = ""
 wifi_text_list = []
 bt_text_list = []
 gps_text_list = []
+
+# BT 页协议多选框状态（点击 BT 分析时由 main 同步）
+bt_hfp = False
+bt_a2dp = False
+bt_le = False

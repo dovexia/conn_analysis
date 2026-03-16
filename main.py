@@ -286,6 +286,9 @@ def build_bt_tab(parent, initial=None):
         print("--- BT 左列（平台） ---")
 
     def on_bt_analyze():
+        share_data.bt_hfp = bt_hfp_var.get()
+        share_data.bt_a2dp = bt_a2dp_var.get()
+        share_data.bt_le = bt_le_var.get()
         sync_share_data()
         get_and_log_bt_check_state()
         analyze_bt()
