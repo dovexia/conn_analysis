@@ -181,12 +181,12 @@ def build_wifi_tab(parent, initial=None):
 
     wifi_right_frame = tk.Frame(parent)
     wifi_right_frame.pack(side='right', padx=20, pady=10, fill='both', expand=True)
-    wifi_text_list = list(init.get("text_list", []))
+    share_data.wifi_text_list = list(init.get("text_list", []))
 
     def wifi_add_text():
         s = wifi_entry.get().strip()
         if s:
-            wifi_text_list.append(s)
+            share_data.wifi_text_list.append(s)
             wifi_listbox.insert(tk.END, s)
             wifi_entry.delete(0, tk.END)
 
@@ -195,11 +195,11 @@ def build_wifi_tab(parent, initial=None):
         if sel:
             i = sel[0]
             wifi_listbox.delete(i)
-            wifi_text_list.pop(i)
+            share_data.wifi_text_list.pop(i)
 
     def wifi_clear_list():
         wifi_listbox.delete(0, tk.END)
-        wifi_text_list.clear()
+        share_data.wifi_text_list.clear()
 
     wifi_entry_frame = tk.Frame(wifi_right_frame)
     wifi_entry_frame.pack(fill='x', pady=(0, 6))
@@ -209,7 +209,7 @@ def build_wifi_tab(parent, initial=None):
     tk.Label(wifi_right_frame, text="已插入列表:").pack(anchor='w')
     wifi_listbox = tk.Listbox(wifi_right_frame, height=8, width=30)
     wifi_listbox.pack(fill='both', expand=True, pady=4)
-    for s in wifi_text_list:
+    for s in share_data.wifi_text_list:
         wifi_listbox.insert(tk.END, s)
     wifi_list_btn_frame = tk.Frame(wifi_right_frame)
     wifi_list_btn_frame.pack(fill='x')
@@ -228,7 +228,7 @@ def build_wifi_tab(parent, initial=None):
             "linux": [linux_check_vars[i].get() for i in range(4)],
             "rtos": [rtos_check_vars[i].get() for i in range(4)],
             "unknown": [unknown_check_vars[i].get() for i in range(4)],
-            "text_list": list(wifi_text_list),
+            "text_list": list(share_data.wifi_text_list),
         }
 
     tk.Button(parent, text="WiFi 分析", command=on_wifi_analyze, width=12, height=2).pack(pady=20)
@@ -247,12 +247,12 @@ def build_bt_tab(parent, initial=None):
     tk.Label(parent, text="蓝牙日志分析", font=("", 12)).pack(pady=10)
     bt_right_frame = tk.Frame(parent)
     bt_right_frame.pack(side='right', padx=20, pady=10, fill='both', expand=True)
-    bt_text_list = list(init.get("text_list", []))
+    share_data.bt_text_list = list(init.get("text_list", []))
 
     def bt_add_text():
         s = bt_entry.get().strip()
         if s:
-            bt_text_list.append(s)
+            share_data.bt_text_list.append(s)
             bt_listbox.insert(tk.END, s)
             bt_entry.delete(0, tk.END)
 
@@ -261,11 +261,11 @@ def build_bt_tab(parent, initial=None):
         if sel:
             i = sel[0]
             bt_listbox.delete(i)
-            bt_text_list.pop(i)
+            share_data.bt_text_list.pop(i)
 
     def bt_clear_list():
         bt_listbox.delete(0, tk.END)
-        bt_text_list.clear()
+        share_data.bt_text_list.clear()
 
     bt_entry_frame = tk.Frame(bt_right_frame)
     bt_entry_frame.pack(fill='x', pady=(0, 6))
@@ -275,7 +275,7 @@ def build_bt_tab(parent, initial=None):
     tk.Label(bt_right_frame, text="已插入列表:").pack(anchor='w')
     bt_listbox = tk.Listbox(bt_right_frame, height=8, width=30)
     bt_listbox.pack(fill='both', expand=True, pady=4)
-    for s in bt_text_list:
+    for s in share_data.bt_text_list:
         bt_listbox.insert(tk.END, s)
     bt_btn_frame = tk.Frame(bt_right_frame)
     bt_btn_frame.pack(fill='x')
@@ -304,7 +304,7 @@ def build_bt_tab(parent, initial=None):
 
     def get_bt_state():
         return {
-            "text_list": list(bt_text_list),
+            "text_list": list(share_data.bt_text_list),
             "hfp": bt_hfp_var.get(),
             "a2dp": bt_a2dp_var.get(),
             "le": bt_le_var.get(),
@@ -319,12 +319,12 @@ def build_gps_tab(parent, initial=None):
     tk.Label(parent, text="GPS 日志分析", font=("", 12)).pack(pady=10)
     gps_right_frame = tk.Frame(parent)
     gps_right_frame.pack(side='right', padx=20, pady=10, fill='both', expand=True)
-    gps_text_list = list(init.get("text_list", []))
+    share_data.gps_text_list = list(init.get("text_list", []))
 
     def gps_add_text():
         s = gps_entry.get().strip()
         if s:
-            gps_text_list.append(s)
+            share_data.gps_text_list.append(s)
             gps_listbox.insert(tk.END, s)
             gps_entry.delete(0, tk.END)
 
@@ -333,11 +333,11 @@ def build_gps_tab(parent, initial=None):
         if sel:
             i = sel[0]
             gps_listbox.delete(i)
-            gps_text_list.pop(i)
+            share_data.gps_text_list.pop(i)
 
     def gps_clear_list():
         gps_listbox.delete(0, tk.END)
-        gps_text_list.clear()
+        share_data.gps_text_list.clear()
 
     gps_entry_frame = tk.Frame(gps_right_frame)
     gps_entry_frame.pack(fill='x', pady=(0, 6))
@@ -347,7 +347,7 @@ def build_gps_tab(parent, initial=None):
     tk.Label(gps_right_frame, text="已插入列表:").pack(anchor='w')
     gps_listbox = tk.Listbox(gps_right_frame, height=8, width=30)
     gps_listbox.pack(fill='both', expand=True, pady=4)
-    for s in gps_text_list:
+    for s in share_data.gps_text_list:
         gps_listbox.insert(tk.END, s)
     gps_btn_frame = tk.Frame(gps_right_frame)
     gps_btn_frame.pack(fill='x')
@@ -363,7 +363,7 @@ def build_gps_tab(parent, initial=None):
         analyze_gps()
 
     def get_gps_state():
-        return {"text_list": list(gps_text_list)}
+        return {"text_list": list(share_data.gps_text_list)}
 
     tk.Button(parent, text="GPS 分析", command=on_gps_analyze, width=12, height=2).pack(pady=20)
     return get_gps_state

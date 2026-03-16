@@ -4,11 +4,12 @@ import tkinter as tk
 import share_data
 
 def analyze_wifi():
-    # 从 main 共享的状态读取：文件路径、目录路径、平台选择
+    # 从 main 共享的状态读取：文件路径、目录路径、平台选择、已插入列表
     file_path = share_data.file_path
     dir_path = share_data.dir_path
     os_selection = share_data.os_selection
-    dir_frame = share_data.dir_frame  # 主界面目录所在 Frame 的引用（可选使用）
+    dir_frame = share_data.dir_frame
+    wifi_text_list = share_data.wifi_text_list  # 主界面 WiFi 页「已插入列表」
 
     win = tk.Toplevel()
     win.title("WiFi 分析")

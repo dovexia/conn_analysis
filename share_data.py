@@ -12,3 +12,8 @@ dir_frame = None
 
 # 平台下拉框当前选中的文本（Android / Linux / RTOS / unknown）
 os_selection = ""
+
+# 各标签页「已插入列表」的文本列表，供对应 analyze 模块读取
+wifi_text_list = []
+bt_text_list = []
+gps_text_list = []

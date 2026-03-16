@@ -36,7 +36,10 @@
     "text_list": []
   },
   "bt": {
-    "text_list": [],
+    "text_list": [
+      "hfp_connected",
+      "hfp_disconnected"
+    ],
     "hfp": false,
     "a2dp": false,
     "le": false
