@@ -13,7 +13,7 @@
       false,
       false,
       false,
-      false
+      true
     ],
     "linux": [
       false,
@@ -30,7 +30,7 @@
     "unknown": [
       false,
       false,
-      false,
+      true,
       false
     ],
     "text_list": []
@@ -40,9 +40,9 @@
       "hfp_connected",
       "hfp_disconnected"
     ],
-    "hfp": false,
+    "hfp": true,
     "a2dp": false,
-    "le": false
+    "le": true
   },
   "gps": {
     "text_list": []

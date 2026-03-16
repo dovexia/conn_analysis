@@ -12,7 +12,7 @@ def on_button_click():
 
 root = tk.Tk()
 root.title("无线分析")
-root.geometry("960x600")  # 设置窗口大小
+root.geometry("1024x768")  # 设置窗口大小
 
 # 菜单栏
 menubar = tk.Menu(root)
@@ -109,7 +109,7 @@ def build_wifi_tab(parent, initial=None):
     os_group.pack(side='left', padx=(0, 40))
     wifi_check_frame = tk.Frame(os_group)
     wifi_check_frame.pack(padx=8, pady=8)
-    wifi_check_labels = ["Android", "Linux", "RTOS", "unknown"]
+    wifi_check_labels = ["AP", "STA", "AP_STA", "Wifi-Direct"]
     left_init = init.get("left", [])
     for i in range(4):
         var = tk.BooleanVar(value=left_init[i] if i < len(left_init) else False)
@@ -117,7 +117,8 @@ def build_wifi_tab(parent, initial=None):
         cb = tk.Checkbutton(wifi_check_frame, text=wifi_check_labels[i], variable=var, anchor='w')
         cb.pack(anchor='w', pady=2)
 
-    wifi_check_frame_right = tk.Frame(wifi_check_container, width=480, height=100)
+    # 5 行（含 ALL）：每行约 24px，高度需 ≥ 120，否则第 5 行会被裁掉
+    wifi_check_frame_right = tk.Frame(wifi_check_container, width=480, height=130)
     wifi_check_frame_right.pack(side='left')
     wifi_check_frame_right.pack_propagate(False)
     wifi_check_labels_right_android = ["Android0", "Android1", "Android2", "Android3", "ALL"]
@@ -125,33 +126,33 @@ def build_wifi_tab(parent, initial=None):
     wifi_check_labels_right_rtos = ["RTOS0", "RTOS1", "RTOS2", "RTOS3", "ALL"]
     wifi_check_labels_right_unknown = ["unknown0", "unknown1", "unknown2", "unknown3", "ALL"]
 
-    def _list4(key):
-        return init.get(key, [])[:4]
+    def _list5(key):
+        return init.get(key, [])[:5]
 
     android_check_vars = []
     linux_check_vars = []
     rtos_check_vars = []
     unknown_check_vars = []
-    for i in range(4):
-        v = _list4("android")
+    for i in range(5):
+        v = _list5("android")
         var = tk.BooleanVar(value=v[i] if i < len(v) else False)
         android_check_vars.append(var)
         cb = tk.Checkbutton(wifi_check_frame_right, text=wifi_check_labels_right_android[i], variable=var, anchor='w')
         cb.place(x=0, y=i * 24)
-    for i in range(4):
-        v = _list4("linux")
+    for i in range(5):
+        v = _list5("linux")
         var = tk.BooleanVar(value=v[i] if i < len(v) else False)
         linux_check_vars.append(var)
         cb = tk.Checkbutton(wifi_check_frame_right, text=wifi_check_labels_right_linux[i], variable=var, anchor='w')
         cb.place(x=120, y=i * 24)
-    for i in range(4):
-        v = _list4("rtos")
+    for i in range(5):
+        v = _list5("rtos")
         var = tk.BooleanVar(value=v[i] if i < len(v) else False)
         rtos_check_vars.append(var)
         cb = tk.Checkbutton(wifi_check_frame_right, text=wifi_check_labels_right_rtos[i], variable=var, anchor='w')
         cb.place(x=240, y=i * 24)
-    for i in range(4):
-        v = _list4("unknown")
+    for i in range(5):
+        v = _list5("unknown")
         var = tk.BooleanVar(value=v[i] if i < len(v) else False)
         unknown_check_vars.append(var)
         cb = tk.Checkbutton(wifi_check_frame_right, text=wifi_check_labels_right_unknown[i], variable=var, anchor='w')
@@ -163,19 +164,19 @@ def build_wifi_tab(parent, initial=None):
             checked = wifi_check_vars[i].get()
             print(f"  {label}: {'勾选' if checked else '未勾选'}")
         print("--- 右列 Android ---")
-        for i, label in enumerate(wifi_check_labels_right_android[:4]):
+        for i, label in enumerate(wifi_check_labels_right_android[:5]):
             checked = android_check_vars[i].get()
             print(f"  {label}: {'勾选' if checked else '未勾选'}")
         print("--- 右列 Linux ---")
-        for i, label in enumerate(wifi_check_labels_right_linux[:4]):
+        for i, label in enumerate(wifi_check_labels_right_linux[:5]):
             checked = linux_check_vars[i].get()
             print(f"  {label}: {'勾选' if checked else '未勾选'}")
         print("--- 右列 RTOS ---")
-        for i, label in enumerate(wifi_check_labels_right_rtos[:4]):
+        for i, label in enumerate(wifi_check_labels_right_rtos[:5]):
             checked = rtos_check_vars[i].get()
             print(f"  {label}: {'勾选' if checked else '未勾选'}")
         print("--- 右列 unknown ---")
-        for i, label in enumerate(wifi_check_labels_right_unknown[:4]):
+        for i, label in enumerate(wifi_check_labels_right_unknown[:5]):
             checked = unknown_check_vars[i].get()
             print(f"  {label}: {'勾选' if checked else '未勾选'}")
 
