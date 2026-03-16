@@ -85,16 +85,20 @@ share_data.os_selection = os_var.get()
 print(f"[OS选择] 当前平台索引: {os_combo_index}")
 
 # 三个 sheet 页（标签页）
+# 限制标签页标题宽度为 10 个字符，文字居中
 notebook = ttk.Notebook(root)
 notebook.pack(padx=20, pady=10, fill='both', expand=True)
+
+_style = ttk.Style()
+_style.configure("TNotebook.Tab", width=10, anchor="center")
 
 sheet_wifi = tk.Frame(notebook, padx=20, pady=20)
 sheet_bt = tk.Frame(notebook, padx=20, pady=20)
 sheet_gps = tk.Frame(notebook, padx=20, pady=20)
 
-notebook.add(sheet_wifi, text="WiFi")
-notebook.add(sheet_bt, text="BT")
-notebook.add(sheet_gps, text="GPS")
+notebook.add(sheet_wifi, text=" WiFi ")
+notebook.add(sheet_bt, text="  BT  ")
+notebook.add(sheet_gps, text=" GPS  ")
 
 
 def build_wifi_tab(parent, initial=None):
