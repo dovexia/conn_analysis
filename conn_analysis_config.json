@@ -1,0 +1,47 @@
+{
+  "file_path": "",
+  "dir_path": "",
+  "os_selection": "Android",
+  "wifi": {
+    "left": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "android": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "linux": [
+      false,
+      true,
+      false,
+      false
+    ],
+    "rtos": [
+      false,
+      false,
+      true,
+      false
+    ],
+    "unknown": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "text_list": []
+  },
+  "bt": {
+    "text_list": [],
+    "hfp": false,
+    "a2dp": false,
+    "le": false
+  },
+  "gps": {
+    "text_list": []
+  }
+}
